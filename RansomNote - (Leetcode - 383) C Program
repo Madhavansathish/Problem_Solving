@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+// Function to check if ransomNote can be constructed
+bool canConstruct(char* ransomNote, char* magazine) {
+    int freq[26] = {0};  // frequency array
+
+    // Count characters in magazine
+    for (int i = 0; magazine[i] != '\0'; i++) {
+        freq[magazine[i] - 'a']++;
+    }
+
+    // Check ransomNote against frequencies
+    for (int i = 0; ransomNote[i] != '\0'; i++) {
+        if (freq[ransomNote[i] - 'a'] == 0) {
+            return false;
+        }
+        freq[ransomNote[i] - 'a']--;
+    }
+    return true;
+}
+
+int main() {
+    char ransomNote1[] = "aab";
+    char magazine1[] = "baa";
+
+    if (canConstruct(ransomNote1, magazine1)) {
+        printf("true\n");   // Expected: true
+    } else {
+        printf("false\n");
+    }
+
+    char ransomNote2[] = "aa";
+    char magazine2[] = "ab";
+
+    if (canConstruct(ransomNote2, magazine2)) {
+        printf("true\n");
+    } else {
+        printf("false\n");  // Expected: false
+    }
+
+    return 0;
+}
