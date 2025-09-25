@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+char findTheDifference(char* s, char* t) {
+    int freq[26] = {0};  // for 'a' to 'z'
+
+    // Count chars from s
+    for (int i = 0; s[i] != '\0'; i++) {
+        freq[s[i] - 'a']++;
+    }
+
+    // Subtract chars from t
+    for (int i = 0; t[i] != '\0'; i++) {
+        freq[t[i] - 'a']--;
+        if (freq[t[i] - 'a'] < 0) {
+            return t[i]; // this is the extra char
+        }
+    }
+
+    return 0; // should never reach here
+}
+
+int main() {
+    char s1[] = "abcd";
+    char t1[] = "abcde";
+    printf("Extra character: %c\n", findTheDifference(s1, t1)); // e
+
+    char s2[] = "aab";
+    char t2[] = "abaa";
+    printf("Extra character: %c\n", findTheDifference(s2, t2)); // a
+
+    return 0;
+}
