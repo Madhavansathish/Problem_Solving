@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include<string.h>
+
+int main()
+{
+    char word1[100];
+    char word2[100];
+    
+    scanf("%s",word1);
+    scanf("%s",word2);
+    int n=strlen(word1);
+    int n1=strlen(word2);
+    for(int i=0;i<n;i++){
+        if(word1[i]>='A' && word1[i]<='Z'){
+            word1[i]=word1[i]+32;
+        }
+    }
+    for(int i=0;i<n1;i++){
+        if(word2[i]>='A' && word2[i]<='Z'){
+            word2[i]=word2[i]+32;
+        }
+    }
+    
+    int i=0;
+    int lex=0;
+    while(word1[i]!='\0'&&word2[i]!='\0'){
+        if(word1[i]<word2[i]){
+            lex=-1;
+            break;
+        }
+        else if(word1[i]>word2[i]){
+            lex=1;
+            break;
+        }
+        i++;
+    }
+    
+    if(lex==0){
+        printf("0");
+    }
+    else{
+        printf("%d",lex);
+    }
+}
