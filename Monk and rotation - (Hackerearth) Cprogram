@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int main() {
+    int T;
+    scanf("%d", &T); // Number of test cases
+
+    while (T--) {
+        int N, K;
+        scanf("%d %d", &N, &K);
+        
+        int A[N]; // Declare array
+        for (int i = 0; i < N; i++) {
+            scanf("%d", &A[i]);
+        }
+        
+        // Step 1: Handle cases where K >= N
+        K = K % N;
+
+        // If no rotation needed, just print
+        if (K == 0) {
+            for (int i = 0; i < N; i++) {
+                printf("%d ", A[i]);
+            }
+            printf("\n");
+            continue;
+        }
+
+        // Step 2: Create a temporary array to store last K elements
+        int temp[K];
+        for (int i = 0; i < K; i++) {
+            temp[i] = A[N - K + i]; // copy last K elements
+        }
+
+        // Step 3: Shift the first (N-K) elements to the right by K
+        for (int i = N - K - 1; i >= 0; i--) {
+            A[i + K] = A[i];
+        }
+
+        // Step 4: Copy temp[] elements to the beginning of A
+        for (int i = 0; i < K; i++) {
+            A[i] = temp[i];
+        }
+
+        // Step 5: Print rotated array
+        for (int i = 0; i < N; i++) {
+            printf("%d ", A[i]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
