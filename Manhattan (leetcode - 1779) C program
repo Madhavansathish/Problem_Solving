@@ -1,0 +1,15 @@
+int nearestValidPoint(int x, int y, int** points, int pointsSize, int* pointsColSize) {
+    int min=INT_MAX;
+    int idx=-1;
+    int j=0;
+    for(int i=0;i<pointsSize;i++){
+        if(x==points[i][j]||y==points[i][j+1]){
+            int ans=abs(x-points[i][j])+abs(y-points[i][j+1]);
+            if(ans<min){
+                min=ans;
+                idx=i;
+            }
+        }
+    }
+    return idx;
+}
