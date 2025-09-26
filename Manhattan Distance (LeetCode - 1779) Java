@@ -1,0 +1,19 @@
+class Solution {
+    public int nearestValidPoint(int x, int y, int[][] points) {
+        int idx=-1;
+        int min=Integer.MAX_VALUE;
+        for(int i=0;i<points.length;i++){
+            int px=points[i][0];
+            int py=points[i][1];
+
+            if(px==x||py==y){
+                int ans=Math.abs(x-px)+Math.abs(y-py);
+                if(ans<min){
+                    min=ans;
+                    idx=i;
+                }
+            }
+        }
+        return idx;
+    }
+}
