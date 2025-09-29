@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+    int t;
+    scanf("%d",&t);
+    while(t--){
+        char org[]="codeforces";
+        char str[20];
+        scanf("%s",str);
+        
+        int diff=0;
+        
+        for(int i=0;i<10;i++){
+            if(org[i]!=str[i]){
+                diff+=1;
+            }
+        }
+        printf("%d\n",diff);
+    }
+}
