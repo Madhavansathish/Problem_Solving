@@ -1,0 +1,28 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int q;
+    scanf("%d", &q);
+    while (q--) {
+        char s[105], t[105];
+        scanf("%s", s);
+        scanf("%s", t);
+
+        int freq[26] = {0};
+        for (int i = 0; s[i]; i++) {
+            freq[s[i] - 'a'] = 1;
+        }
+
+        int common = 0;
+        for (int i = 0; t[i]; i++) {
+            if (freq[t[i] - 'a']) {
+                common = 1;
+                break;
+            }
+        }
+
+        printf(common ? "YES\n" : "NO\n");
+    }
+    return 0;
+}
