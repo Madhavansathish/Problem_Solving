@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d",&n);
+    char ch[n];
+    scanf("%s",ch);
+    int i=0;
+    int count=0;
+    while(ch[i]!='\0'){
+        char c1=ch[i];
+        char c2=ch[i+1];
+        if(c1==c2){
+            if(c2=='a')
+              ch[i+1]='b';
+            else
+              ch[i+1]='a';
+            count++;
+        }
+        i+=2;
+    }
+    printf("%d\n",count);
+    printf("%s",ch);
+}
