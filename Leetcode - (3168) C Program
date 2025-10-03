@@ -1,0 +1,17 @@
+int minimumChairs(char* s) {
+   
+    int free=0;
+    int min=0;
+    for(int i=0;s[i]!='\0';i++){
+        if(s[i]=='E'){
+            free++;
+        }
+        else if(s[i]=='L'){
+            free--;
+        }
+        if(free>min){
+            min=free;
+        }
+    }
+    return min;
+}
